@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+
+    <title>Hello, world!</title>
+
+
+    <script defer>
+        let name = prompt('name?') ?? Date.now();
+        if (name == "") name = 'user - ' + Math.random().toFixed(2);
+    </script>
+    <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
+    <script defer src="webRTC.js"></script>
+
+</head>
+
+<body>
+
+    <style>
+        section {
+            background-color: #272727;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .card {
+            width: 55%;
+            background-color: #c8c8c8;
+        }
+
+        .box-msg {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            max-height: 50vh;
+            overflow-y: auto;
+            border: 2px solid #414141;
+            border-radius: 5px;
+        }
+
+        .box-msg video {
+            position: relative;
+            width: 50%;
+        }
+
+        .box-msg img {
+            position: relative;
+            width: 50%;
+        }
+
+        .box-users {
+            max-height: 50vh;
+            overflow-y: auto;
+            border: 2px solid #414141;
+            border-radius: 5px;
+            padding: 10px 0;
+            padding-left: 30px;
+        }
+    </style>
+
+    <section>
+
+        <div class="card">
+            <form class="card-body" id="box-form">
+                <div class="box-msg m-0" id="box-stream">
+                </div>
+                <div class="form-group mb-1">
+                    <label for="localSDP">Local SDP</label>
+                    <textarea class="form-control" name="localSDP" id="localSDP"></textarea>
+                </div>
+                <div class="form-group m-0">
+                    <label for="clientSDP">Client SDP</label>
+                    <textarea class="form-control" name="clientSDP" id="clientSDP"></textarea>
+                </div>
+                <button type="button" class="btn btn-primary btn-sm btn-block mt-3" id="stream-btn">Stream</button>
+                <a href="index.html" class="btn btn-secondary btn-sm mt-2">back</a>
+            </form>
+        </div>
+
+        <div class="card mt-3 py-1 px-2">
+            <h5 class="p-0">User Active</h5>
+            <div class="box-users mt-2" id="box-users">
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/bootstrap/js/jquery-3.4.1.min.js"></script>
+    <script src="assets/bootstrap/js/popper.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
